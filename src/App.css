@@ -18,3 +18,57 @@
     background-color: #f4f4f4f4;
     font-family: 'Red Hat Mono', monospace;
 }
+
+button {
+    margin: 20px auto;
+    color: white;
+    background: #333;
+    padding: 10px;
+    font-size: 18px;
+    border: 1px solid #3333;
+}
+
+img {
+    width: 250px;
+    height: 250px;
+    margin: 10px 0;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border: 1px solid #dedede;
+}
+
+.app__user {
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.app__icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app__icons .fas {
+    margin: 0 30px;
+    transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -ms-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+}
+
+.app__icons .fas:hover {
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    cursor: pointer;
+}
