@@ -40,6 +40,34 @@ img {
     border: 1px solid #dedede;
 }
 
+.app__title {
+    display: block;
+    white-space: nowrap;
+    border-right: 4px solid;
+    width: 27ch;
+    animation: typing 4s steps(29), blink .5s infinite step-end alternate;
+    overflow: hidden;
+    -webkit-animation: typing 4s steps(29), blink .5s infinite step-end alternate;
+}
+
+
+/* Start animation */
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
+
+
+/* End animation */
+
 .app__user {
     width: auto;
     height: auto;
