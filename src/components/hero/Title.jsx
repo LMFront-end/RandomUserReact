@@ -2,6 +2,7 @@
 import React, {useState, Fragment} from 'react'
 import axios from 'axios';
 import { Button } from './Button'
+import {PhraseGenerator} from '../phrase/PhraseGenerator';
 
 
 const Title = () => {
@@ -21,6 +22,22 @@ const Title = () => {
         "fas fa-lock fa-4x",
     ]
 
+    const PhraseGenerator = ({user}) => {
+
+        const phrase = [
+            `My user name is ${user.name.first}`,
+            `My email address is ${user.email}`,
+            `I was born on ${user.dob.date.slice(0, 10)}`,
+            `My country is ${user.location.country}`,
+            `My phone number ${user.phone}`,
+            `My code chat is ${user.login.password}`
+        ]
+    
+        return (
+            <div>{phrase[activeLink]}</div>
+        )
+    }
+
 
     const onClickHandler = () => {
 
@@ -35,6 +52,10 @@ const Title = () => {
             setLoading(false);
             setActiveUser(true)
         })
+    }
+
+    const activeLinkHandler = (index) => {
+        setActiveLink(index);
     }
 
     return (
@@ -52,10 +73,11 @@ const Title = () => {
                         return (
                             <Fragment key={user.id.value}>
                                 <img src={user.picture.large} alt="#"/>
+                                <PhraseGenerator user={user}/>
                                 <div className="app__icons">
                                     {icons.map((icon, index) => {
                                         return(
-                                            <i className={icon} key={index}></i>
+                                            <i className={icon} key={index} onMouseEnter={() => activeLinkHandler(index)}></i>
                                         )
                                     })}
                                 </div>

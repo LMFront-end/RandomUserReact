@@ -44,7 +44,7 @@ img {
     height: 250px;
     margin: 10px 0;
     margin-top: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 70px;
     border-radius: 50%;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
@@ -55,6 +55,7 @@ img {
 
 .app__title {
     display: block;
+    margin-top: 100px;
     margin-bottom: 20px;
     white-space: nowrap;
     border-right: 4px solid;
