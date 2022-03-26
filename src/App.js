@@ -1,9 +1,13 @@
 import './App.css';
+import { Header } from './components/header/Header';
+
+import { Title } from './components/hero/Title';
 
 function App() {
   return (
-    <div className="App">
-      <h1 className="app__title">Random User Generator App</h1>
+    <div>
+      <Header />
+      <Title />
     </div>
   );
 }
