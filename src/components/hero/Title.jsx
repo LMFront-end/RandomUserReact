@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, {useState, Fragment, useEffect} from 'react'
+import React, {useState, Fragment} from 'react'
 import axios from 'axios';
 import { Button } from './Button'
 import { URL_API } from '../../utils/Data';
