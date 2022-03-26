@@ -16,7 +16,6 @@
     width: 100%;
     height: 100vh;
     overflow: hidden;
-    background-color: #f4f4f4f4;
     font-family: 'Red Hat Mono', monospace;
 }
 
@@ -112,3 +111,20 @@ img {
 
 
 /* dark mode */
+
+.giphos__container.dark {
+    background-color: #201e1e;
+    transition: all 1s ease;
+}
+
+.dark .header__button {
+    background-color: #201e1e;
+    border: 2px solid white;
+    color: white;
+}
+
+.dark h1,
+.dark h3 {
+    color: #f9ca24;
+    font-weight: 600;
+}

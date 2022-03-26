@@ -11,11 +11,11 @@
 
 .header__button {
     font-family: 'Poppins', sans-serif;
-    color: #1535e7;
+    color: #333;
     margin: 10px 35px 0px 0px;
     width: 150px;
     height: 40px;
-    border: 2px solid rgb(88, 233, 201);
+    border: 2px solid #ffa502;
     border-radius: 15px;
     font-size: 14px;
     font-weight: bold;
@@ -25,7 +25,7 @@
 }
 
 .header__button:hover {
-    border: 2px dashed #2f3542;
+    border: 2px solid #2f3542;
     background-color: #ffa502;
     color: #2f3542;
 }
