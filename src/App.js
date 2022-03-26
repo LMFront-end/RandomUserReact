@@ -9,9 +9,7 @@ const App = ()  =>{
 
   //useState
   const [isDark, setDark] = useState(false);
-  const [userData, setUserData] = useState([]);
-  const [loading, setLoading] = useState(false);
- 
+  
   const [activeLink, setActiveLink] = useState(0);
 
   

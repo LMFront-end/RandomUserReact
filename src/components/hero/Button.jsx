@@ -6,7 +6,7 @@ const Button = ({isActive, clicked}) => {
         <div>
             
             <button onClick={clicked}>
-                Get user <i className="fa fa-user-plus me-1"></i> 
+                {isActive ? "get another user" : "get user" } <i className="fa fa-user-plus me-1"></i> 
             </button>
 
         </div>
