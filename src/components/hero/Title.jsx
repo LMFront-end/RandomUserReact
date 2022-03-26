@@ -1,16 +1,31 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, {useState, Fragment} from 'react'
+import React, {useState, Fragment, useEffect} from 'react'
 import axios from 'axios';
 import { Button } from './Button'
+import { URL_API } from '../../utils/Data';
 
 
 
 const Title = () => {
 
+    const initialState = {
+        id: null,
+        picture: "",
+        userName: "",
+        userEmail: "",
+        userWasBorn: "",
+        phone: "",
+        userPassword: "",
+        timeStamp: null
+    }
+
     const [activeUser, setActiveUser] = useState(false);
-    const [userData, setUserData] = useState([]); 
+    const [userData, setUserData] = useState(initialState); 
     const [loading, setLoading] = useState(false);
     const [activeLink, setActiveLink] = useState(0);
+
+    
+
 
     /* icons */
     const icons = [
@@ -22,15 +37,16 @@ const Title = () => {
         "fas fa-lock fa-4x",
     ]
 
+
     const PhraseGenerator = ({user}) => {
 
         const phrase = [
-            `My user name is ${user.name.first} do you want to meet me?`,
-            `My email address is ${user.email}`,
-            `I was born on ${user.dob.date.slice(0, 10)}`,
-            `I live in ${user.location.country}`,
+            `My user name is ${user.userName} do you want to meet me?`,
+            `My email address is ${user.userEmail}`,
+            `I was born on ${user.userWasBorn}`,
+            `I live in ${user.country}`,
             `My phone number ${user.phone} talk to me`,
-            `My code chat is ${user.login.password}`
+            `My code chat is ${user.userPassword}`
         ]
     
         return (
@@ -40,18 +56,51 @@ const Title = () => {
 
 
     const onClickHandler = () => {
+
         setActiveLink(0)
         setLoading(true);
+
         axios.get('https://randomuser.me/api/')
-        .then((response) => {
-            console.log(response.data.results);
-            setUserData(response.data.results);
+            .then((response) => {
+                    setUserData({
+                    ...userData,
+                    picture: response.data.results[0].picture.large,
+                    userEmail: response.data.results[0].email,
+                    userWasBorn: response.data.results[0].dob.date.slice(0, 10),
+                    country: response.data.results[0].location.country,
+                    phone: response.data.results[0].phone,
+                    userPassword: response.data.results[0].login.password
+                });
+
         }).catch((error) => {
+
             setLoading(true);
+
         }).finally(() => {
+
             setLoading(false);
             setActiveUser(true)
         })
+        .then(
+            axios.post(URL_API + "/createUserName/10", userData)
+                .then((response) => {
+            setUserData({
+                ...userData,
+                userName: response.data.userName,
+                timeStamp: response.data.timeStamp
+            })
+        }).catch((error) => {
+
+            setLoading(true);
+
+        }).finally(() => {
+
+            setLoading(false);
+            setActiveUser(true)
+        }))
+
+        console.log(userData)
+
     }
 
     const activeLinkHandler = (index) => {
@@ -61,7 +110,7 @@ const Title = () => {
     return (
         <div className="App">
             <h1 className="app__title btn btn-outline-dark  ms-3">
-                Random User Generator App <i class="fa-solid fa-comment"></i>
+                Random User Generator App <i className="fa-solid fa-comment"></i>
             </h1>
 
             <Button isActive={activeUser} clicked={onClickHandler}/>
@@ -69,23 +118,20 @@ const Title = () => {
                 <h1>Loading...</h1>
             ):(
                 <div className="app__user">
-                    {userData.map((user) => {
-                        return (
-                            <Fragment key={user.id.value}>
-                                <img src={user.picture.large} alt="#"/>
-                                <PhraseGenerator user={user}/>
-                                <div className="app__icons">
-                                    {icons.map((icon, index) => {
-                                        return(
-                                            <i className={icon} key={index} onMouseEnter={() => activeLinkHandler(index)}></i>
-                                        )
-                                    })}
-                                </div>
-                            </Fragment>
-                        )
-                    })}
-                </div>
-            )
+                    <Fragment key={userData.id}>
+                    <img src={userData.picture} alt=""/>
+                        <PhraseGenerator user={userData}/>
+
+                        <div className="app__icons">
+                            {icons.map((icon, index) => {
+                                return(
+                                    <i className={icon} key={index} onMouseEnter={() => activeLinkHandler(index)}></i>
+                                )
+                            })}
+                        </div>
+                    </Fragment>
+            </div>
+        )
         
         }
         </div>
