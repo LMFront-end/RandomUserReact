@@ -59,7 +59,7 @@ img {
     margin-bottom: 20px;
     white-space: nowrap;
     border-right: 4px solid;
-    width: 26ch;
+    width: 29ch;
     animation: typing 4s steps(29), blink .5s infinite step-end alternate;
     overflow: hidden;
     -webkit-animation: typing 4s steps(29), blink .5s infinite step-end alternate;
@@ -92,11 +92,18 @@ img {
     flex-direction: column;
 }
 
+.phrase {
+    font-family: 'Red Hat Mono', monospace;
+    font-size: 18px;
+    font-weight: 600;
+}
+
 .app__icons {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 7px;
+    margin-top: 20px;
     margin-bottom: 40px;
     text-shadow: 0 0 30px #fed330;
 }
@@ -149,7 +156,7 @@ img {
 }
 
 .footer__container .sociales i {
-    font-size: 26px;
+    font-size: 20px;
     transition: 0.2s linear;
     -webkit-transition: 0.2s linear;
     -moz-transition: 0.2s linear;
@@ -244,6 +251,10 @@ a:hover:nth-child(5) {
 .giphos__container.dark {
     background-color: #201e1e;
     transition: all 1s ease;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    -o-transition: all 1s ease;
 }
 
 .dark .header__button {
@@ -254,8 +265,12 @@ a:hover:nth-child(5) {
 
 .dark h1,
 .dark h3 {
-    color: #f9ca24;
+    color: #fc5c65;
     font-weight: 600;
+}
+
+.dark .phrase {
+    color: #dedede;
 }
 
 .dark .app__icons .fas {

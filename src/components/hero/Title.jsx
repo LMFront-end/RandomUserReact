@@ -2,7 +2,7 @@
 import React, {useState, Fragment} from 'react'
 import axios from 'axios';
 import { Button } from './Button'
-import {PhraseGenerator} from '../phrase/PhraseGenerator';
+
 
 
 const Title = () => {
@@ -25,22 +25,22 @@ const Title = () => {
     const PhraseGenerator = ({user}) => {
 
         const phrase = [
-            `My user name is ${user.name.first}`,
+            `My user name is ${user.name.first} do you want to meet me?`,
             `My email address is ${user.email}`,
             `I was born on ${user.dob.date.slice(0, 10)}`,
-            `My country is ${user.location.country}`,
-            `My phone number ${user.phone}`,
+            `I live in ${user.location.country}`,
+            `My phone number ${user.phone} talk to me`,
             `My code chat is ${user.login.password}`
         ]
     
         return (
-            <div>{phrase[activeLink]}</div>
+            <div className="phrase">{phrase[activeLink]}</div>
         )
     }
 
 
     const onClickHandler = () => {
-
+        setActiveLink(0)
         setLoading(true);
         axios.get('https://randomuser.me/api/')
         .then((response) => {
@@ -61,7 +61,7 @@ const Title = () => {
     return (
         <div className="App">
             <h1 className="app__title btn btn-outline-dark  ms-3">
-                Random User Generator App
+                Random User Generator App <i class="fa-solid fa-comment"></i>
             </h1>
 
             <Button isActive={activeUser} clicked={onClickHandler}/>
