@@ -16,7 +16,7 @@ const Title = () => {
         "fas fa-user fa-4x",
         "fas fa-envelope fa-4x",
         "fas fa-calendar-alt fa-4x",
-        "fas fa-marker fa-4x",
+        "fas fa-map-pin fa-4x",
         "fas fa-phone fa-4x",
         "fas fa-lock fa-4x",
     ]
