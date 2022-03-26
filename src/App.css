@@ -42,6 +42,8 @@ img {
     width: 250px;
     height: 250px;
     margin: 10px 0;
+    margin-top: 20px;
+    margin-bottom: 30px;
     border-radius: 50%;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
@@ -52,6 +54,7 @@ img {
 
 .app__title {
     display: block;
+    margin-bottom: 20px;
     white-space: nowrap;
     border-right: 4px solid;
     width: 26ch;
@@ -91,6 +94,7 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 10px;
 }
 
 .app__icons .fas {
@@ -129,4 +133,8 @@ img {
 .dark h3 {
     color: #f9ca24;
     font-weight: 600;
+}
+
+.dark .app__icons .fas {
+    color: #dedede;
 }

@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, {useState} from 'react'
+import React, {useState, Fragment} from 'react'
 import axios from 'axios';
 import { Button } from './Button'
 
@@ -9,6 +9,17 @@ const Title = () => {
     const [activeUser, setActiveUser] = useState(false);
     const [userData, setUserData] = useState([]); 
     const [loading, setLoading] = useState(false);
+    const [activeLink, setActiveLink] = useState(0);
+
+    /* icons */
+    const icons = [
+        "fas fa-user fa-4x",
+        "fas fa-envelope fa-4x",
+        "fas fa-calendar-alt fa-4x",
+        "fas fa-marker fa-4x",
+        "fas fa-phone fa-4x",
+        "fas fa-lock fa-4x",
+    ]
 
 
     const onClickHandler = () => {
@@ -37,7 +48,20 @@ const Title = () => {
                 <h1>Loading...</h1>
             ):(
                 <div className="app__user">
-
+                    {userData.map((user) => {
+                        return (
+                            <Fragment key={user.id.value}>
+                                <img src={user.picture.large} alt="#"/>
+                                <div className="app__icons">
+                                    {icons.map((icon, index) => {
+                                        return(
+                                            <i className={icon} key={index}></i>
+                                        )
+                                    })}
+                                </div>
+                            </Fragment>
+                        )
+                    })}
                 </div>
             )
         

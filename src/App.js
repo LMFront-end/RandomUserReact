@@ -10,14 +10,11 @@ const App = ()  =>{
   //useState
   const [isDark, setDark] = useState(false);
   
-  const [activeLink, setActiveLink] = useState(0);
 
-  
   return (
     <div className={`giphos__container ${isDark ? "dark" : ""}`}>
       <Header isDark={isDark} setDark={setDark} />
       <Title />
-      <Button />
     </div>
   );
 }
